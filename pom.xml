@@ -13,8 +13,8 @@
         <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
 
-    <name>aparapi-jni</name>
-    <description>A java OpenCl framework.</description>
+    <name>Aparapi JNI</name>
+    <description>Loads the native JNI library component needed to use Aparapi.</description>
     <url>http://aparapi.com</url>
 
     <licenses>
@@ -31,14 +31,14 @@
     </organization>
 
     <scm>
-        <connection>scm:git:https://github.com/Syncleus/aparapi.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/Syncleus/aparapi.git</developerConnection>
-        <url>https://github.com/Syncleus/aparapi</url>
+        <connection>scm:git:https://github.com/Syncleus/aparapi-jni.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/Syncleus/aparapi-jni.git</developerConnection>
+        <url>https://github.com/Syncleus/aparapi-jni</url>
     </scm>
 
     <issueManagement>
         <system>github</system>
-        <url>https://github.com/Syncleus/aparapi/issues</url>
+        <url>https://github.com/Syncleus/aparapi-jni/issues</url>
     </issueManagement>
 
     <developers>
