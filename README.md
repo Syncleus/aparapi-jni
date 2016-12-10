@@ -63,10 +63,9 @@ Simply add the dependency above then call the load method, thats all there is to
 try {
    NativeLoader.load();
    System.out.println("Aparapi JNI loaded successfully.");
-   openCLAvailable = true;
 }
 catch (final IOException e) {
-   logger.log(Level.SEVERE, "Check your environment. Failed to load aparapi native library "
+   System.out.println("Check your environment. Failed to load aparapi native library "
          + " or possibly failed to locate opencl native library (opencl.dll/opencl.so)."
          + " Ensure that OpenCL is in your PATH (windows) or in LD_LIBRARY_PATH (linux).");
 }
