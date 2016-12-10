@@ -14,8 +14,8 @@ public class NativeLoader {
 //                ? "64" : "32";
         final String arch = System.getProperty("os.arch");
         if( arch.contains("64"))
-            NativeUtils.loadLibraryFromJar("/linux/x86_64/libaparapi.so");
+            NativeUtils.loadLibraryFromJar("/linux/libaparapi_x86_64.so");
         else
-            NativeUtils.loadLibraryFromJar("/linux/x86/libaparapi.so");
+            NativeUtils.loadLibraryFromJar("/linux/libaparapi_x86.so");
     }
 }
