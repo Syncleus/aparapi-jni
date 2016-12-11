@@ -20,6 +20,9 @@ import com.aparapi.natives.util.NativeUtils;
 import java.io.IOException;
 
 public class NativeLoader {
+    private static final String ARCH = System.getProperty("os.arch").toLowerCase();
+    private static final String OS = System.getProperty("os.name").toLowerCase();
+
     public static void load() throws IOException {
 //        String arch = System.getenv("PROCESSOR_ARCHITECTURE");
 //        String wow64Arch = System.getenv("PROCESSOR_ARCHITEW6432");
@@ -27,10 +30,40 @@ public class NativeLoader {
 //        String realArch = arch.endsWith("64")
 //                || wow64Arch != null && wow64Arch.endsWith("64")
 //                ? "64" : "32";
-        final String arch = System.getProperty("os.arch");
-        if( arch.contains("64"))
-            NativeUtils.loadLibraryFromJar("/linux/libaparapi_x86_64.so");
-        else
-            NativeUtils.loadLibraryFromJar("/linux/libaparapi_x86.so");
+        if( isUnix() ) {
+            if( is64Bit() )
+                NativeUtils.loadLibraryFromJar("/linux/libaparapi_x86_64.so");
+            else
+                NativeUtils.loadLibraryFromJar("/linux/libaparapi_x86.so");
+        }
+        else if( isMac() ) {
+            NativeUtils.loadLibraryFromJar("/osx/libaparapi_x86_64.dylib");
+        }
+    }
+
+    private static boolean isWindows() {
+        return (OS.indexOf("win") >= 0);
+    }
+
+    private static boolean isMac() {
+        return (OS.indexOf("mac") >= 0);
+    }
+
+    private static boolean isUnix() {
+        return (OS.indexOf("nix") >= 0 || OS.indexOf("nux") >= 0 || OS.indexOf("aix") > 0 );
+    }
+
+    private static boolean isSolaris() {
+        return (OS.indexOf("sunos") >= 0);
+    }
+
+    private static boolean is64Bit() {
+        if( ARCH.contains("64"))
+            return true;
+        return false;
+    }
+
+    private static boolean is32Bit() {
+        return !is64Bit();
     }
 }
