@@ -9,7 +9,7 @@
 
 This project simply loads the [Aparapi Native](https://github.com/Syncleus/aparapi-native) library at runtime. This prevents the need for the user to install it manually.
 
-There is usually no need for a user to call this library directly as it is called internally by [Aparapi](https://github.com/Syncleus/aparapi). However it may be useful if creating your own user agent.
+There is usually no need for a user to call this library directly as it is called internally by [Aparapi](https://github.com/Syncleus/aparapi). However it may be useful if creating your own custom agent.
 
 **Currently packaged native libraries support Mac OSX 64bit, Linux 64bit, and Linux 32bit. Windows support coming in the next few days.** 
 
