@@ -1,5 +1,9 @@
 # Aparapi JNI Changelog
 
+## 1.1.1
+
+* Fixed "`CXXABI_1.3.8' not found " error encountered on some older systems.
+
 ## 1.1.0
 
 * Added Windows 64bit support.
