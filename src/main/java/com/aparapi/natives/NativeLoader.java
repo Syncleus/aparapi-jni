@@ -40,6 +40,8 @@ public class NativeLoader {
             NativeUtils.loadLibraryFromJar("/osx/libaparapi_x86_64.dylib");
         else if( isWindows() && is64Bit() )
             NativeUtils.loadLibraryFromJar("/win/libaparapi_x86_64.dll");
+        else if( isWindows() && is32Bit() )
+            NativeUtils.loadLibraryFromJar("/win/libaparapi_x86.dll");
         else
             throw new IOException("System is not compatable with any of the known native libraries.");
     }
