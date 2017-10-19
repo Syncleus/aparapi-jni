@@ -1,5 +1,9 @@
 # Aparapi JNI Changelog
 
+## 1.1.3
+
+* createProgram in Java had the wrong signature producing a unsatisfied link exception that is now fixed.
+
 ## 1.1.2
 
 * Fixed `UnsatisfiedLinkError` which occured only on Windows.
