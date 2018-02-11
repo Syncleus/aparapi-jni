@@ -2,6 +2,7 @@
 
 ## 1.1.3
 
+* Added support for OpenCL 2.1.
 * createProgram in Java had the wrong signature producing a unsatisfied link exception that is now fixed.
 
 ## 1.1.2
