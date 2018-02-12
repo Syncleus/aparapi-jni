@@ -1,5 +1,7 @@
 # Aparapi JNI Changelog
 
+## 1.2.1
+
 ## 1.2.0
 
 * Added support for OpenCL 2.1.
