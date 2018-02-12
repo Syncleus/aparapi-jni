@@ -1,6 +1,6 @@
 # Aparapi JNI Changelog
 
-## 1.1.3
+## 1.2.0
 
 * Added support for OpenCL 2.1.
 * createProgram in Java had the wrong signature producing a unsatisfied link exception that is now fixed.
