@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.syncleus</groupId>
         <artifactId>syncleus</artifactId>
-        <version>3</version>
+        <version>6</version>
     </parent>
 
     <groupId>com.aparapi</groupId>
@@ -68,8 +68,6 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>3.8.1</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -98,7 +96,6 @@
             <plugin>
                 <groupId>com.github.github</groupId>
                 <artifactId>site-maven-plugin</artifactId>
-                <version>0.12</version>
                 <configuration>
                     <server>github</server>
                     <message>Creating site for aparapi</message>
@@ -124,7 +121,6 @@
             <plugin>
                 <groupId>com.mycila.maven-license-plugin</groupId>
                 <artifactId>maven-license-plugin</artifactId>
-                <version>1.9.0</version>
                 <configuration>
                     <skipExistingHeaders>false</skipExistingHeaders>
                 </configuration>
@@ -132,7 +128,6 @@
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.7</version>
                 <extensions>true</extensions>
                 <configuration>
                     <serverId>ossrh</serverId>
