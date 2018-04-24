@@ -2,6 +2,8 @@
 
 ## 1.3.1
 
+* Fixed JVM crash with multi-dimensional arrays in Local memory (2D and 3D local arrays are now supported)
+
 ## 1.3.0
 
 * This version was skipped due to a mistake in the versioning of the previous release. The version now matches the version of the native library.
