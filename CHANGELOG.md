@@ -1,5 +1,7 @@
 # Aparapi JNI Changelog
 
+## 1.3.2
+
 ## 1.3.1
 
 * Fixed JVM crash with multi-dimensional arrays in Local memory (2D and 3D local arrays are now supported)
