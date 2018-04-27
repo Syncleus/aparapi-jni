@@ -15,7 +15,7 @@ There is usually no need for a user to call this library directly as it is calle
 
 ## Support and Documentation
 
-Aparapi JNI Javadocs: [latest](http://www.javadoc.io/doc/com.aparapi/aparapi-jni) - [1.4.0](http://www.javadoc.io/doc/com.aparapi/aparapi-jni/1.4.0) - [1.3.1](http://www.javadoc.io/doc/com.aparapi/aparapi-jni/1.3.1) - [1.2.0](http://www.javadoc.io/doc/com.aparapi/aparapi-jni/1.2.0) - [1.1.2](http://www.javadoc.io/doc/com.aparapi/aparapi-jni/1.1.2) - [1.1.1](http://www.javadoc.io/doc/com.aparapi/aparapi-jni/1.1.1) - [1.1.0](http://www.javadoc.io/doc/com.aparapi/aparapi-jni/1.1.0) - [1.0.1](http://www.javadoc.io/doc/com.aparapi/aparapi-jni/1.0.1) - [1.0.0](http://www.javadoc.io/doc/com.aparapi/aparapi-jni/1.0.0)
+Aparapi JNI Javadocs: [latest](http://www.javadoc.io/doc/com.aparapi/aparapi-jni) - [1.4.1](http://www.javadoc.io/doc/com.aparapi/aparapi-jni/1.4.1) - [1.4.0](http://www.javadoc.io/doc/com.aparapi/aparapi-jni/1.4.0) - [1.3.1](http://www.javadoc.io/doc/com.aparapi/aparapi-jni/1.3.1) - [1.2.0](http://www.javadoc.io/doc/com.aparapi/aparapi-jni/1.2.0) - [1.1.2](http://www.javadoc.io/doc/com.aparapi/aparapi-jni/1.1.2) - [1.1.1](http://www.javadoc.io/doc/com.aparapi/aparapi-jni/1.1.1) - [1.1.0](http://www.javadoc.io/doc/com.aparapi/aparapi-jni/1.1.0) - [1.0.1](http://www.javadoc.io/doc/com.aparapi/aparapi-jni/1.0.1) - [1.0.0](http://www.javadoc.io/doc/com.aparapi/aparapi-jni/1.0.0)
 
 For detailed documentation see [Aparapi.com](http://Aparapi.com) or check out the [latest Javadocs](http://www.javadoc.io/doc/com.aparapi/aparapi-jni).
 
@@ -42,7 +42,7 @@ To include Aparapi in your project of choice include the following Maven depende
 <dependency>
     <groupId>com.aparapi</groupId>
     <artifactId>aparapi-jni</artifactId>
-    <version>1.4.0</version>
+    <version>1.4.1</version>
 </dependency>
 ```
 
