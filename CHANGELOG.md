@@ -2,6 +2,8 @@
 
 ## 1.4.1
 
+* Fixed exception handling when calling Java method OpenCLDevice.configure() to not hide exceptions
+
 ## 1.4.0
 
 * Fixed local arrays handling 1D and ND, to cope with arrays resizing across kernel executions
