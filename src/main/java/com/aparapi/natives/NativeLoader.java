@@ -63,9 +63,7 @@ public class NativeLoader {
     }
 
     private static boolean is64Bit() {
-        if( ARCH.contains("64"))
-            return true;
-        return false;
+        return ARCH.contains("64");
     }
 
     private static boolean is32Bit() {
