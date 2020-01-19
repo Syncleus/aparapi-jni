@@ -1,5 +1,7 @@
 # Aparapi JNI Changelog
 
+## 1.4.3
+
 ## 1.4.2
 
 * Fixed Potential JVM crash when using multi-dimensional arrays (> 1D)
