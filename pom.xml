@@ -37,14 +37,14 @@
     </organization>
 
     <scm>
-        <connection>scm:git:https://github.com/Syncleus/aparapi-jni.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/Syncleus/aparapi-jni.git</developerConnection>
-        <url>https://github.com/Syncleus/aparapi-jni</url>
+        <connection>scm:git:https://git.qoto.org/aparapi/aparapi-jni.git</connection>
+        <developerConnection>scm:git:ssh://git@git.qoto.org/aparapi/aparapi-jni.git</developerConnection>
+        <url>https://git.qoto.org/aparapi/aparapi-jni</url>
     </scm>
 
     <issueManagement>
         <system>github</system>
-        <url>https://github.com/Syncleus/aparapi-jni/issues</url>
+        <url>https://git.qoto.org/aparapi/aparapi-jni/issues</url>
     </issueManagement>
 
     <developers>
