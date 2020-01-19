@@ -2,6 +2,8 @@
 
 ## 1.4.2
 
+* Fixed Potential JVM crash when using multi-dimensional arrays (> 1D)
+
 ## 1.4.1
 
 * Fixed exception handling when calling Java method OpenCLDevice.configure() to not hide exceptions
