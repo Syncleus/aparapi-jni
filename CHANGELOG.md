@@ -2,6 +2,10 @@
 
 ## 1.4.3
 
+* Enforces Kernel and Device max work group size limitations and provides query functions for clGetKernelWorkGroupInfo(...)
+* Support for armhf and aarch64 architectures for Linux OS
+* Support for loading MingW compiled DLLs
+
 ## 1.4.2
 
 * Fixed Potential JVM crash when using multi-dimensional arrays (> 1D)

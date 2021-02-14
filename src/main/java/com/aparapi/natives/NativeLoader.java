@@ -23,6 +23,17 @@ public class NativeLoader {
     private static final String ARCH = System.getProperty("os.arch").toLowerCase();
     private static final String OS = System.getProperty("os.name").toLowerCase();
 
+    /**
+     * Ensure that libraries are loaded in proper order even if in presence of optimizing compilers.
+     * @param librariesAndJars a two dimensional array containing one more entries of a pair: jar package filename, target library name
+     * @throws IOException if libraries fail to load
+     */
+    private static void loadLibrariesFromJarsInProperOrder(String[][] librariesAndJars) throws IOException {
+        for (String[] libraryAndJar : librariesAndJars) {
+            NativeUtils.loadLibraryFromJar(libraryAndJar[0], libraryAndJar[1]); 
+        }
+    }
+    
     public static void load() throws IOException {
 //        String arch = System.getenv("PROCESSOR_ARCHITECTURE");
 //        String wow64Arch = System.getenv("PROCESSOR_ARCHITEW6432");
@@ -31,19 +42,35 @@ public class NativeLoader {
 //                || wow64Arch != null && wow64Arch.endsWith("64")
 //                ? "64" : "32";
         if( isUnix() ) {
-            if( is64Bit() )
-                NativeUtils.loadLibraryFromJar("/linux/libaparapi_x86_64.so");
-            else
-                NativeUtils.loadLibraryFromJar("/linux/libaparapi_x86.so");
-        }
-        else if( isMac() && is64Bit() )
-            NativeUtils.loadLibraryFromJar("/osx/libaparapi_x86_64.dylib");
-        else if( isWindows() && is64Bit() )
-            NativeUtils.loadLibraryFromJar("/win/libaparapi_x86_64.dll");
-        else if( isWindows() && is32Bit() )
-            NativeUtils.loadLibraryFromJar("/win/libaparapi_x86.dll");
-        else
-            throw new IOException("System is not compatable with any of the known native libraries.");
+            if ( isArm() ) {
+                if ( is64Bit() )
+                    NativeUtils.loadLibraryFromJar("/linux/libaparapi_aarch64.so", "libaparapi.so");
+                else
+                    NativeUtils.loadLibraryFromJar("/linux/libaparapi_armhf.so", "libaparapi.so");
+            } else {
+                if( is64Bit() )
+                    NativeUtils.loadLibraryFromJar("/linux/libaparapi_x86_64.so", "libaparapi.so");
+                else
+                    NativeUtils.loadLibraryFromJar("/linux/libaparapi_x86.so", "libaparapi.so");
+            }
+        } else if( isMac() && is64Bit() ) {
+            NativeUtils.loadLibraryFromJar("/osx/libaparapi_x86_64.dylib", "libaparapi.dylib");
+        } else if( isWindows() && is64Bit() ) {
+            String[][] librariesAndJars = new String[][] {
+                {"/win/libgcc_s_seh_x86_64.dll", "libgcc_s_seh-1.dll"},
+                {"/win/libstdc++-6_x86_64.dll", "libstdc++-6.dll"},
+                {"/win/libaparapi_x86_64.dll", "libaparapi.dll"}
+            };  
+            loadLibrariesFromJarsInProperOrder(librariesAndJars);
+        } else if( isWindows() && is32Bit() ) {
+            String[][] librariesAndJars = new String[][] {
+                {"/win/libgcc_s_sjlj_x86.dll", "libgcc_s_sjlj-1.dll"},
+                {"/win/libstdc++-6_x86.dll", "libstdc++-6.dll"},
+                {"/win/libaparapi_x86.dll", "libaparapi.dll"}
+            };  
+            loadLibrariesFromJarsInProperOrder(librariesAndJars);
+        } else
+            throw new IOException("System is not compatible with any of the known native libraries.");
     }
 
     private static boolean isWindows() {
@@ -60,6 +87,13 @@ public class NativeLoader {
 
     private static boolean isSolaris() {
         return OS.contains("sunos");
+    }
+    
+    private static boolean isArm() {
+        if ( ARCH.startsWith("arm") || ARCH.startsWith("aarch64") ) {
+            return true;
+        }
+        return false;
     }
 
     private static boolean is64Bit() {

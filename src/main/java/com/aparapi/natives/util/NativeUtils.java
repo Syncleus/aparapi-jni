@@ -16,10 +16,13 @@
 package com.aparapi.natives.util;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.attribute.FileAttribute;
 
 /**
  * A simple library class which helps with loading dynamic libraries stored in the
- * JAR archive. These libraries usualy contain implementation of some methods in
+ * JAR archive. These libraries usually contain implementation of some methods in
  * native code (using JNI - Java Native Interface).
  *
  */
@@ -34,7 +37,7 @@ public class NativeUtils {
     /**
      * Loads library from current JAR archive
      *
-     * The file from JAR is copied into system temporary directory and then loaded. The temporary file is deleted after exiting.
+     * The file from JAR is copied into system temporary directory and then loaded. The temporary file and folder are deleted after exiting.
      * Method uses String as filename because the pathname is "abstract", not system-dependent.
      *
      * @param path The path of file inside JAR as absolute path (beginning with '/'), e.g. /package/File.ext
@@ -42,7 +45,7 @@ public class NativeUtils {
      * @throws IllegalArgumentException If source file (param path) does not exist
      * @throws IllegalArgumentException If the path is not absolute or if the filename is shorter than three characters (restriction of @see File#createTempFile(java.lang.String, java.lang.String)).
      */
-    public static void loadLibraryFromJar(String path) throws IOException {
+    public static void loadLibraryFromJar(String path, String libraryTargetFileName) throws IOException {
 
         if (!path.startsWith("/")) {
             throw new IllegalArgumentException("The path has to be absolute (start with '/').");
@@ -52,13 +55,11 @@ public class NativeUtils {
         String[] parts = path.split("/");
         String filename = (parts.length > 1) ? parts[parts.length - 1] : null;
 
-        // Split filename to prexif and suffix (extension)
+        // Split filename to prefix and suffix (extension)
         String prefix = "";
-        String suffix = null;
         if (filename != null) {
             parts = filename.split("\\.", 2);
             prefix = parts[0];
-            suffix = (parts.length > 1) ? "."+parts[parts.length - 1] : null; // Thanks, davs! :-)
         }
 
         // Check if the filename is okay
@@ -66,12 +67,18 @@ public class NativeUtils {
             throw new IllegalArgumentException("The filename has to be at least 3 characters long.");
         }
 
-        // Prepare temporary file
-        File temp = File.createTempFile(prefix, suffix);
-        temp.deleteOnExit();
-
-        if (!temp.exists()) {
-            throw new FileNotFoundException("File " + temp.getAbsolutePath() + " does not exist.");
+        // Prepare temporary file in a temporary folder, to keep names consistent, or Windows will unexpectedly fail to load the DLLs 
+        Path tempDir = Files.createTempDirectory("Aparapi", new FileAttribute<?>[] {});
+        tempDir.toFile().deleteOnExit();
+        if (!tempDir.toFile().exists()) {
+            throw new FileNotFoundException("Directory " + tempDir.toAbsolutePath() + " does not exist.");
+        }
+        
+        Path libraryFilePath = tempDir.resolve(libraryTargetFileName);
+        Path temp = Files.createFile(libraryFilePath, new FileAttribute<?>[] {});
+        temp.toFile().deleteOnExit();
+        if (!temp.toFile().exists()) {
+            throw new FileNotFoundException("File " + temp.toAbsolutePath() + " does not exist.");
         }
 
         // Prepare buffer for data copying
@@ -85,7 +92,7 @@ public class NativeUtils {
         }
 
         // Open output stream and copy data between source file in JAR and the temporary file
-        OutputStream os = new FileOutputStream(temp);
+        OutputStream os = new FileOutputStream(temp.toFile());
         try {
             while ((readBytes = is.read(buffer)) != -1) {
                 os.write(buffer, 0, readBytes);
@@ -95,8 +102,8 @@ public class NativeUtils {
             os.close();
             is.close();
         }
-
+        
         // Finally, load the library
-        System.load(temp.getAbsolutePath());
+        System.load(temp.toAbsolutePath().toString());
     }
 }
