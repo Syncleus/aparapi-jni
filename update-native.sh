@@ -1,4 +1,5 @@
 #!/bin/sh
+
 cd native
 UID=${UID} GID=${GID} docker-compose run --rm aparapi-native-builder
 cd ..
@@ -16,3 +17,9 @@ cp -f ./native/.libs64/linux/libaparapi.so.*.*.* ./src/main/resources/linux/liba
 
 cp -f ./native/.libs32/linuxARM/libaparapi.so.*.*.* ./src/main/resources/linux/libaparapi_armhf.so
 cp -f ./native/.libs64/linuxARM/libaparapi.so.*.*.* ./src/main/resources/linux/libaparapi_aarch64.so
+
+cd native
+UID=${UID} GID=${GID} docker-compose run --rm -e CROSS_TRIPLE=x86_64-apple-darwin aparapi-native-builder ./buildDarwin.sh
+cd ..
+
+cp -f ./native/.libs64/darwin/libaparapi.1.dylib ./src/main/resources/osx/libaparapi_x86_64.dylib
