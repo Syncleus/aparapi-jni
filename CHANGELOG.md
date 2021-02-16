@@ -5,6 +5,7 @@
 * Enforces Kernel and Device max work group size limitations and provides query functions for clGetKernelWorkGroupInfo(...)
 * Support for armhf and aarch64 architectures for Linux OS
 * Support for loading MingW compiled DLLs
+* Allows OpenCL versions that have not been tested (such as 3.0) to be run but issues a warning (previously would fail).
 
 ## 1.4.2
 
