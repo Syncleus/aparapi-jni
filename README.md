@@ -2,7 +2,7 @@
 
 [![License](http://img.shields.io/:license-apache-blue.svg?style=flat-square)](http://www.apache.org/licenses/LICENSE-2.0.html)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.aparapi/aparapi-jni/badge.png?style=flat)](https://maven-badges.herokuapp.com/maven-central/com.aparapi/aparapi-jni/)
-[![Javadocs](http://www.javadoc.io/badge/com.aparapi/aparapi-jni.svg)](http://www.javadoc.io/doc/com.aparapi/aparapi-jni)
+[![Javadocs](http://www.javadoc.io/badge/com.aparapi/aparapi-jni.svg)](http://www.javadoc.io/doc/com.aparapi/aparapi-jni/1.4.3)
 [![Gitter](https://badges.gitter.im/Syncleus/aparapi.svg)](https://gitter.im/Syncleus/aparapi?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 **Licensed under the Apache Software License v2**
