@@ -6,6 +6,9 @@
 * Support for armhf and aarch64 architectures for Linux OS
 * Support for loading MingW compiled DLLs
 * Allows OpenCL versions that have not been tested (such as 3.0) to be run but issues a warning (previously would fail).
+* Updated the following dependency versions:
+** com.syncleus:syncleus 7 -> 8
+
 
 ## 1.4.2
 
