@@ -1,5 +1,7 @@
 # Aparapi JNI Changelog
 
+## 1.4.4
+
 ## 1.4.3
 
 * Enforces Kernel and Device max work group size limitations and provides query functions for clGetKernelWorkGroupInfo(...)
